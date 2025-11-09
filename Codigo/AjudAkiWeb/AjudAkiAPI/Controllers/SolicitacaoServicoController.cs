@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AjudAkiWebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SolicitacaoServicoController : ControllerBase

@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjudAkiAPI - Backup", "AjudAkiAPI - Backup.csproj", "{022BAE20-AD78-34A0-6C62-97AFCA760FEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjudAkiAPI", "AjudAkiAPI.csproj", "{AE6658A7-D388-2299-42B3-5D28B4AA9633}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{022BAE20-AD78-34A0-6C62-97AFCA760FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022BAE20-AD78-34A0-6C62-97AFCA760FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022BAE20-AD78-34A0-6C62-97AFCA760FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022BAE20-AD78-34A0-6C62-97AFCA760FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6658A7-D388-2299-42B3-5D28B4AA9633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6658A7-D388-2299-42B3-5D28B4AA9633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6658A7-D388-2299-42B3-5D28B4AA9633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6658A7-D388-2299-42B3-5D28B4AA9633}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {832E2394-25F0-4F1A-9085-17C0838889C2}
+	EndGlobalSection
+EndGlobal
