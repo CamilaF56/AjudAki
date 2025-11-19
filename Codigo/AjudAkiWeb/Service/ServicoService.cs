@@ -1,12 +1,9 @@
-﻿using Core;
+﻿using Core.Models;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
-    /// <summary>
-    /// Implementa serviços para manter o ofertar serviço.
-    /// </summary>
     public class ServicoService : IServicoService
     {
         private readonly AjudakiContext context;
@@ -16,22 +13,13 @@ namespace Service
             this.context = context;
         }
 
-        /// <summary>
-        /// Criar um novo serviço na base de dados
-        /// </summary>
-        /// <param name="servico">Objeto do serviço a ser criado.</param>
-        /// <returns>Id do serviço recém-criado.</returns>
         public uint Create(Servico servico)
         {
             context.Add(servico);
             context.SaveChanges();
-            return servico.Id;
+            return (uint)servico.Id;
         }
 
-        /// <summary>
-        /// Remover o serviço da base de dados
-        /// </summary>
-        /// <param name="id">Id do serviço a ser removido.</param>
         public void Delete(uint id)
         {
             var servico = context.Servicos.Find(id);
@@ -42,34 +30,57 @@ namespace Service
             }
         }
 
-        /// <summary>
-        /// Editar dados do serviço na base de dados
-        /// </summary>
-        /// <param name="servico">Objeto do serviço com os novos dados.</param>
         public void Edit(Servico servico)
         {
             context.Update(servico);
             context.SaveChanges();
         }
 
-        /// <summary>
-        /// Buscar um serviço na base de dados
-        /// </summary>
-        /// <param name="id">Id do serviço a ser buscado.</param>
-        /// <returns>Objeto do serviço encontrado ou null, caso não exista.</returns>
         public Servico? Get(uint id)
         {
-            return context.Servicos.Find(id);
+            return context.Servicos
+                .Include(s => s.IdTipoServicoNavigation)
+                .Include(s => s.IdAreaAtuacaoNavigation)
+                .Include(s => s.IdProfissionalNavigation)
+                .AsNoTracking()
+                .FirstOrDefault(s => s.Id == id);
         }
 
-        /// <summary>
-        /// Buscar todos os serviços cadastrados
-        /// </summary>
-        /// <returns>Coleção de serviços cadastrados.</returns>
         public IEnumerable<Servico> GetAll()
         {
-            return context.Servicos.AsNoTracking();
+            return context.Servicos
+                .Include(s => s.IdTipoServicoNavigation)
+                .Include(s => s.IdAreaAtuacaoNavigation)
+                .Include(s => s.IdProfissionalNavigation)
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public IEnumerable<Servico> GetByNome(string nome)
+        {
+            if (string.IsNullOrWhiteSpace(nome))
+                return Enumerable.Empty<Servico>();
+
+            var termo = nome.Trim().ToLowerInvariant();
+
+            return context.Servicos
+                .Include(s => s.IdTipoServicoNavigation)
+                .Include(s => s.IdAreaAtuacaoNavigation)
+                .Include(s => s.IdProfissionalNavigation)
+                .Where(s => !string.IsNullOrEmpty(s.Nome) &&
+                            s.Nome.ToLower().StartsWith(termo))
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public IEnumerable<Servico> GetAllInclude()
+        {
+            return context.Servicos
+                .Include(s => s.IdProfissionalNavigation)
+                .Include(s => s.IdAreaAtuacaoNavigation)
+                .Include(s => s.IdTipoServicoNavigation)
+                .AsNoTracking()
+                .ToList();
         }
     }
 }
-

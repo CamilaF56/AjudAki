@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Pagamentoassinatura
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     public DateTime DataPagamento { get; set; }
 
-    public string? Status { get; set; }
+    public string NomePlano { get; set; } = null!;
 
-    public uint IdProfissional { get; set; }
+    public string Status { get; set; } = null!;
 
-    public uint IdAssinatura { get; set; }
+    public int IdProfissional { get; set; }
+
+    public int IdAssinatura { get; set; }
 
     public virtual Assinatura IdAssinaturaNavigation { get; set; } = null!;
 

@@ -10,9 +10,9 @@ namespace AjudAkiWeb.Models
         Pendente,
         Finalizado
     }
+
     public class ServicoViewModel
     {
-
         [Display(Name = "Código do Serviço")]
         [Required(ErrorMessage = "Código do serviço é obrigatório")]
         [Key]
@@ -33,7 +33,7 @@ namespace AjudAkiWeb.Models
         public ServicoStatusEnum Status { get; set; }
 
         [Display(Name = "Valor da oferta do serviço")]
-        public decimal? Valor { get; set; }
+        public decimal? ValorSugerido { get; set; }
 
         [Display(Name = "Descrição da oferta do serviço")]
         public string? Descricao { get; set; }
@@ -53,11 +53,30 @@ namespace AjudAkiWeb.Models
         [Key]
         public uint IdTipoServico { get; set; }
 
+        [Display(Name = "Código da Pessoa")]
+        public uint? IdPessoa { get; set; }
+
+        [Display(Name = "Nome do Profissional")]
+        public string? NomeProfissional { get; set; }
+
+        [Display(Name = "Telefone do Profissional")]
+        public string? TelefoneProfissional { get; set; }
+
+        [Display(Name = "Cep")]
+        public string? Cep { get; set; }
+
+        [Display(Name = "Área de Atuação")]
+        public string? NomeAreaAtuacao { get; set; }
+
+        [Display(Name = "Tipo de Serviço")]
+        public string? NomeTipoServico { get; set; }
+
+        [Display(Name = "Foto do Serviço")]
+        public string FotoUrl { get; set; }
         public SelectList? ListaProfissionais { get; set; }
         public SelectList? ListaAreaAtuacao { get; set; }
         public SelectList? ListaTiposServico { get; set; }
 
-        // Método para fazer o mapeamento simples do enum para string
         public string GetStatusAsString()
         {
             if (Status.Equals(ServicoStatusEnum.Recusado))
@@ -71,6 +90,5 @@ namespace AjudAkiWeb.Models
             else
                 return "Indefinido";
         }
-
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Core.Service
+﻿using Core.Models;
+
+namespace Core.Service
 {
     public interface IAgendaService
     {

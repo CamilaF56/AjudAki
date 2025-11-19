@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Models;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -22,6 +22,17 @@ namespace AjudAkiAPI
                     Title = "AjudAki API",
                     Version = "v1",
                     Description = "API do sistema AjudAki"
+                });
+            });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .WithExposedHeaders("Content-Length", "X-JSON-Response");
                 });
             });
 
@@ -55,6 +66,7 @@ namespace AjudAkiAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowAll");
             app.UseAuthorization();
             app.MapControllers();
             app.Run();

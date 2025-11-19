@@ -1,7 +1,7 @@
 ﻿
 using AjudAkiWeb.Models;
 using AutoMapper;
-using Core;
+using Core.Models;
 using Core.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

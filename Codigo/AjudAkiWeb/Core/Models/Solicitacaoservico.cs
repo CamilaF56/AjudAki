@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Solicitacaoservico
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     public string Nome { get; set; } = null!;
 
@@ -13,15 +13,15 @@ public partial class Solicitacaoservico
 
     public string Status { get; set; } = null!;
 
-    public decimal? Valor { get; set; }
+    public float? Valor { get; set; }
 
     public string? Descricao { get; set; }
 
-    public uint IdCliente { get; set; }
+    public int IdCliente { get; set; }
 
-    public uint IdProfissional { get; set; }
+    public int IdProfissional { get; set; }
 
-    public uint IdTipoServico { get; set; }
+    public int IdTipoServico { get; set; }
 
     public virtual Pessoa IdClienteNavigation { get; set; } = null!;
 

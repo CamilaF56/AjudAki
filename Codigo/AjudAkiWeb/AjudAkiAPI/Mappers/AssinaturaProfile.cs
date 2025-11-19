@@ -1,6 +1,6 @@
 using AjudAkiWeb.Models;
 using AutoMapper;
-using Core;
+using Core.Models;
 
 namespace Mappers
 {

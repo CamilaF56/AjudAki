@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Models;
 using Core.Dto;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +27,7 @@ namespace Service
         {
             context.Add(cliente);
             context.SaveChanges();
-            return cliente.Id;
+            return (uint)cliente.Id;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Service
             var query = from cliente in context.Pessoas
                         select new ClienteDTO
                         {
-                            Id = cliente.Id,
+                            Id = (uint)cliente.Id,
                             Nome = cliente.Nome,
                             NomeAssinatura = cliente.IdAssinaturaNavigation.Nome
                         };
@@ -98,7 +98,7 @@ namespace Service
                         orderby cliente.Nome
                         select new ClienteDTO
                         {
-                            Id = cliente.Id,
+                            Id = (uint)cliente.Id,
                             Nome = cliente.Nome
                         };
             return query.AsNoTracking().ToList();

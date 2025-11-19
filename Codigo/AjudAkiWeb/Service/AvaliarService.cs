@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Models;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +25,7 @@ namespace Service
         {
             context.Add(avaliar);
             context.SaveChanges();
-            return avaliar.Id;
+            return (uint)avaliar.Id;
         }
 
         /// <summary>

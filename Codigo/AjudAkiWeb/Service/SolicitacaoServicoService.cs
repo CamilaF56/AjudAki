@@ -1,5 +1,5 @@
 ﻿
-using Core;
+using Core.Models;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -28,7 +28,7 @@ namespace Service
             context.Add(solicitacaoServico);
             context.SaveChanges();
 
-            return solicitacaoServico.Id;
+            return (uint)solicitacaoServico.Id;
         }
 
         /// <summary>

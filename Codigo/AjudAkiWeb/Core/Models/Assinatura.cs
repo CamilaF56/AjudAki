@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Assinatura
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
-    public string Nome { get; set; } = null!;
+    public string? Nome { get; set; }
 
-    public string Status { get; set; } = null!;
+    public string? Status { get; set; }
 
-    public decimal? Valor { get; set; }
+    public float? Valor { get; set; }
 
     public string? Descricao { get; set; }
 

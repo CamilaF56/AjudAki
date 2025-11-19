@@ -1,4 +1,5 @@
-﻿
+﻿using Core.Models;
+
 namespace Core.Service
 {
     public interface ISolicitacaoServicoService

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Tiposervico
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     public string Nome { get; set; } = null!;
 
-    public uint IdAgenda { get; set; }
+    public int IdAgenda { get; set; }
 
-    public uint IdAreaAtuacao { get; set; }
+    public int IdAreaAtuacao { get; set; }
 
     public virtual Agendum IdAgendaNavigation { get; set; } = null!;
 

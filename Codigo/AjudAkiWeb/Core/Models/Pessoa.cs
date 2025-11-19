@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Pessoa
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     public string Nome { get; set; } = null!;
 
@@ -31,7 +31,7 @@ public partial class Pessoa
 
     public string TipoPessoa { get; set; } = null!;
 
-    public uint IdAssinatura { get; set; }
+    public int IdAssinatura { get; set; }
 
     public virtual ICollection<Contratacao> Contratacaos { get; set; } = new List<Contratacao>();
 

@@ -1,12 +1,12 @@
-﻿
-using AjudAkiWeb.Models;
+﻿using AjudAkiWeb.Models;
 using AutoMapper;
-using Core;
+using Core.Models;
+using Core.Dto;
 using Core.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace AjudAkiWebAPI.Controllers
 {
     //[Authorize]
@@ -33,9 +33,8 @@ namespace AjudAkiWebAPI.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            var listaServicos = servicoService.GetAll();
-
-            return Ok(listaServicos);
+            var lista = servicoService.GetAllInclude();
+            return Ok(mapper.Map<IEnumerable<ServicoDTO>>(lista));
         }
 
         // GET api/<AreaAtuacaoController>/5
@@ -48,6 +47,20 @@ namespace AjudAkiWebAPI.Controllers
 
             ServicoViewModel servicoViewModel = mapper.Map<ServicoViewModel>(servico);
             return Ok(servicoViewModel);
+        }
+
+        // GET api/servico/buscar?termo=...
+        [HttpGet("buscar")]
+        public ActionResult Buscar([FromQuery] string termo)
+        {
+            if (string.IsNullOrWhiteSpace(termo))
+                return BadRequest("Termo de busca é obrigatório.");
+
+            var resultados = servicoService.GetByNome(termo);
+            var dtos = mapper.Map<IEnumerable<ServicoDTO>>(resultados);
+            var viewModels = mapper.Map<IEnumerable<ServicoViewModel>>(dtos);
+
+            return Ok(viewModels);
         }
 
         // POST api/<AreaAtuacaoController>

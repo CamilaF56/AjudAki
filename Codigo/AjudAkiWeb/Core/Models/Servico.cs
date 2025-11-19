@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Servico
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     public string Nome { get; set; } = null!;
 
     public DateTime Data { get; set; }
 
-    public uint IdTipoServico { get; set; }
+    public int IdTipoServico { get; set; }
 
-    public uint IdAreaAtuacao { get; set; }
+    public int IdAreaAtuacao { get; set; }
 
-    public uint IdProfissional { get; set; }
+    public int IdProfissional { get; set; }
+
+    public string Descricao { get; set; } = null!;
+
+    public decimal ValorSugerido { get; set; }
+
+    public string FotoUrl { get; set; } = null!;
 
     public virtual ICollection<Contratacao> Contratacaos { get; set; } = new List<Contratacao>();
 

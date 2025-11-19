@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Models;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +26,7 @@ namespace Service
             context.Add(areaAtuacao);
             context.SaveChanges();
 
-            return areaAtuacao.Id;
+            return (uint)areaAtuacao.Id;
         }
 
         /// <summary>

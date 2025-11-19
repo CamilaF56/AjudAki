@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core;
+namespace Core.Models;
 
 public partial class Contratacao
 {
-    public uint Id { get; set; }
+    public int Id { get; set; }
 
     public string Nome { get; set; } = null!;
 
@@ -23,9 +23,9 @@ public partial class Contratacao
 
     public string Status { get; set; } = null!;
 
-    public uint IdServico { get; set; }
+    public int IdServico { get; set; }
 
-    public uint IdCliente { get; set; }
+    public int IdCliente { get; set; }
 
     public virtual ICollection<Avaliacao> Avaliacaos { get; set; } = new List<Avaliacao>();
 

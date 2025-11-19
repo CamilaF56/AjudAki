@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core;
+using Core.Models;
 
 namespace AjudAkiAPI.Mappers
 {
